@@ -1,0 +1,28 @@
+import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
+import { Document, SchemaTypes } from 'mongoose';
+import { getCurrentDate } from '../utils/time';
+
+export type UserDocument = User & Document;
+
+@Schema({ versionKey: false, timestamps: { currentTime: getCurrentDate } })
+export class User {
+    @Prop({ required: true, index: true, unique: true, type: SchemaTypes.String })
+    email: string;
+
+    @Prop({ required: true, type: SchemaTypes.String })
+    password: string;
+
+    @Prop({ index: true, unique: true, type: SchemaTypes.String })
+    nickname: string;
+
+    @Prop({ type: SchemaTypes.String, default: 'default' })
+    salt: string;
+
+    @Prop({ type: SchemaTypes.String, default: 'default' })
+    refreshtoken: string;
+
+    createdAt: Date;
+    updatedAt: Date;
+}
+
+export const UserSchema = SchemaFactory.createForClass(User);

@@ -20,6 +20,7 @@
         "useUnknownInCatchVariables": true,
         "forceConsistentCasingInFileNames": true,
         "allowSyntheticDefaultImports": true,
+        "strictPropertyInitialization": false,
         "newLine": "lf"
     },
     "exclude": ["node_modules", "dist"]
