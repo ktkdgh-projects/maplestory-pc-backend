@@ -19,7 +19,9 @@
     "typecheck:all": "yarn workspaces foreach -pv run typecheck",
     "typecheck": "tsc --noEmit",
     "lint:staged": "lint-staged",
-    "prepare": "husky install"
+    "prepare": "husky install",
+    "init:docker": "docker network create maplestory && docker-compose -f docker-compose.yml up -d",
+    "start:docker": "docker-compose -f docker-compose.yml up -d --build"
   },
   "devDependencies": {
     "@nestjs/cli": "^10.4.9",
