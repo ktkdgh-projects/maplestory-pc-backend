@@ -1,0 +1,67 @@
+{
+    "root": true,
+    "env": {
+        "es6": true,
+        "node": true,
+        "jest": true
+    },
+    "parser": "@typescript-eslint/parser",
+    "parserOptions": {
+        "sourceType": "module",
+        "ecmaVersion": 2020
+    },
+    "plugins": ["@typescript-eslint", "import"],
+    "extends": ["eslint:recommended", "plugin:@typescript-eslint/recommended", "prettier"],
+    "settings": { "import/resolver": { "typescript": { "alwaysTryTypes": true } }},
+    "rules": {
+        "no-implicit-coercion": "error",   
+        "no-warning-comments": [
+            "warn",
+            {
+                "terms": ["TODO", "FIXME", "XXX", "BUG"],
+                "location": "anywhere"
+            }
+        ],
+        "curly": ["error", "all"],               
+        "eqeqeq": ["error", "always", { "null": "ignore" }], 
+        "@typescript-eslint/no-use-before-define": "error", 
+        "@typescript-eslint/no-empty-interface": "off",       
+        "@typescript-eslint/interface-name-prefix": "off",    
+        "@typescript-eslint/explicit-function-return-type": "off",
+        "@typescript-eslint/no-parameter-properties": "off", 
+        "@typescript-eslint/no-var-requires": "error",       
+        "@typescript-eslint/no-non-null-asserted-optional-chain": "warn",
+        "@typescript-eslint/no-explicit-any": "warn",        
+        "@typescript-eslint/no-inferrable-types": "warn",    
+        "@typescript-eslint/no-empty-function": "warn",      
+        "@typescript-eslint/explicit-module-boundary-types": "warn", 
+        "@typescript-eslint/array-type": ["error", { "default": "array-simple" }], 
+        "@typescript-eslint/no-unused-vars": ["error", { "ignoreRestSiblings": true }],
+        "@typescript-eslint/member-ordering": [
+            "error",
+            {
+                "default": [
+                    "public-static-field",
+                    "protected-static-field",
+                    "private-static-field",
+                    "public-instance-field",
+                    "protected-instance-field",
+                    "private-instance-field",
+                    "public-constructor",
+                    "protected-constructor",
+                    "private-constructor",
+                    "public-instance-method",
+                    "protected-instance-method",
+                    "private-instance-method"
+                ]
+            }
+        ],
+        "import/order": [
+            "error",
+            {
+                "groups": ["builtin", "external", "internal", "parent", "sibling", "index", "object"],
+                "alphabetize": { "order": "asc", "caseInsensitive": true }
+            }
+        ]
+    }
+}
