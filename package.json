@@ -4,13 +4,9 @@
   "private": true,
   "workspaces": [
     "apps/*",
-    "libs/**"
+    "libs/*"
   ],
   "scripts": {
-    "gateway": "yarn workspace @gateway/server",
-    "auth": "yarn workspace @auth/server",
-    "event": "yarn workspace @event/server",
-    "database": "yarn workspace @libs/database",
     "build": "tsc -p tsconfig.build.json",
     "build:all": "yarn workspaces foreach --all --exclude maplestory-pc-backend --topological-dev --verbose run build",
     "dev:gateway": "nest start @gateway/server --watch",

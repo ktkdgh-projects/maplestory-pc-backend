@@ -16,9 +16,6 @@ export class User {
     nickname: string;
 
     @Prop({ type: SchemaTypes.String, default: 'default' })
-    salt: string;
-
-    @Prop({ type: SchemaTypes.String, default: 'default' })
     refreshtoken: string;
 
     createdAt: Date;

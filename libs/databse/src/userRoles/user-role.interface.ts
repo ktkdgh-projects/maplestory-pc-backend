@@ -1,10 +1,10 @@
-import { Role } from "../roles";
-import { User } from "../users";
+import { Types } from 'mongoose'
 
 export interface IUserRole {
+  _id: Types.ObjectId;
   id: string;
-  userId: User;
-  roleId: Role;
+  userId: string;
+  roleId: string[];
   createdAt: Date;
   updatedAt: Date;
 }

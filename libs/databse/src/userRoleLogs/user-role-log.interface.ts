@@ -1,12 +1,12 @@
-import { Role } from "../roles";
-import { User } from "../users";
+import { Types } from 'mongoose'
 import { RoleAction, RoleChangeReason } from "./user-role-log.enum";
 
 export interface IUserRoleLog {
+  _id: Types.ObjectId;
   id: string;
-  userId: User;
-  roleId: Role;
-  changedBy: User;
+  userId: string;
+  roleId: string;
+  changedBy: string;
   action: RoleAction;
   reason: RoleChangeReason;
   createdAt: Date;

@@ -1,10 +1,28 @@
-import { Module } from '@nestjs/common';
-import { AppController } from './app.controller';
-import { AppService } from './app.service';
+import { LoggerMiddleware } from '@libs/common';
+import { GlobalConfigModule } from '@libs/config';
+import { MiddlewareConsumer, Module, NestModule } from '@nestjs/common';
+import { MongooseModule } from '@nestjs/mongoose';
+import mongoose from 'mongoose';
+import { RolesModule } from './roles/roles.module';
+import { UsersModule } from './users/users.module';
+
 
 @Module({
-  imports: [],
-  controllers: [AppController],
-  providers: [AppService],
+  imports: [
+    GlobalConfigModule,
+    MongooseModule.forRoot(process.env.MONGODB_URI ?? '', { dbName: 'maple-stroy' }),
+    RolesModule,
+    UsersModule,
+  ],
+  controllers: [],
+  providers: [],
 })
-export class AppModule {}
+export class AppModule implements NestModule {
+    private readonly isDev: boolean = process.env.MODE === 'dev';
+
+    configure(consumer: MiddlewareConsumer) {
+        consumer.apply(LoggerMiddleware).forRoutes('*');
+        mongoose.set('debug', this.isDev);
+    }
+}
+

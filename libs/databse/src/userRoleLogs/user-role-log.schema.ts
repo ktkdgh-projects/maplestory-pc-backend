@@ -1,23 +1,20 @@
 import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
-import { Document, SchemaTypes } from 'mongoose';
-import { Role } from '../roles';
-import { User } from '../users';
+import { Document, SchemaTypes, Types } from 'mongoose';
 import { getCurrentDate } from '../utils/time';
 import { RoleAction, RoleChangeReason } from './user-role-log.enum';
-
 
 export type UserRoleLogDocument = UserRoleLog & Document;
 
 @Schema({ versionKey: false, timestamps: { currentTime: getCurrentDate } })
 export class UserRoleLog {
     @Prop({ref: 'User', type: SchemaTypes.ObjectId })
-    userId: User;
+    userId: Types.ObjectId;
 
     @Prop({ ref: 'Role', type: SchemaTypes.ObjectId })
-    roleId: Role;
+    roleId: Types.ObjectId;
 
     @Prop({ref: 'User', type: SchemaTypes.ObjectId })
-    changedBy: User;
+    changedBy: Types.ObjectId;
 
     @Prop({ required: true, enum: RoleAction })
     action: RoleAction;

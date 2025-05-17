@@ -7,8 +7,8 @@ export type RoleDocument = Role & Document;
 
 @Schema({ versionKey: false, timestamps: { currentTime: getCurrentDate } })
 export class Role {
-    @Prop({ required: true, type: [{ type: String, enum: UserRoleLevel }] })
-    name: UserRoleLevel[];
+    @Prop({ required: true, type: String, enum: UserRoleLevel })
+    name: UserRoleLevel;
 
     @Prop({ required: true, type: SchemaTypes.String })
     description: string;
