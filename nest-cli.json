@@ -41,6 +41,15 @@
             "compilerOptions": {
                 "tsConfigPath": "libs/database/tsconfig.build.json"
             }
+        },
+        "@libs/config": {
+            "type": "library",
+            "root": "libs/config",
+            "entryFile": "index",
+            "sourceRoot": "libs/config/src",
+            "compilerOptions": {
+                "tsConfigPath": "libs/config/tsconfig.build.json"
+            }
         }
     }
 }
