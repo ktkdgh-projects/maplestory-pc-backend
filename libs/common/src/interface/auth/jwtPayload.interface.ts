@@ -3,7 +3,7 @@ export interface IJwtPayload {
     payload: {
         sub: { id: string };
         email: string;
-        role: string[];
+        role: string;
     };
     iat: number;
     nbf: number;
@@ -13,5 +13,5 @@ export interface IJwtPayload {
 export interface IJwtPayloadData {
     sub: { id: string };
     email: string;
-    role: string[];
+    role: string;
 }

@@ -11,5 +11,8 @@ export const configs = () => {
         JWT_REFRESH_SECRET_KEY: env.JWT_REFRESH_SECRET_KEY,
         JWT_ACCESS_TOKEN_TIME: env.JWT_ACCESS_TOKEN_TIME,
         JWT_REFRESH_TOKEN_TIME: env.JWT_REFRESH_TOKEN_TIME,
+        INTERATIONS: env.INTERATIONS,
+        DKLEN: env.DKLEN,
+        HASH: env.HASH
     };
 };

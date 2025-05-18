@@ -50,15 +50,12 @@ export class SigninService {
 
     private async buildJwtPayload(user: IUser): Promise<IJwtPayloadData> {
         const userRoleData = await this.userRolesService.getUserRoleByUserId(user.id);
-
-        const roles = userRoleData.roleId
-            .map(roleStr => roleStr.match(/name:\s*'([^']+)'/)?.[1])
-            .filter((roleName): roleName is string => Boolean(roleName));
-
+        const role = Object(userRoleData.roleId).name
+        
         const payload: IJwtPayloadData = {
             sub: { id: user.id },
             email: user.email,
-            role: roles,
+            role,
         };
 
         return payload;

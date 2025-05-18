@@ -9,8 +9,8 @@ export class UserRole {
     @Prop({ unique: true, ref: 'User', type: SchemaTypes.ObjectId })
     userId: Types.ObjectId;
 
-    @Prop({ ref: 'Role', type: [SchemaTypes.ObjectId] })
-    roleId: Types.ObjectId[];
+    @Prop({ ref: 'Role', type: SchemaTypes.ObjectId })
+    roleId: Types.ObjectId;
 
     createdAt: Date;
     updatedAt: Date;
