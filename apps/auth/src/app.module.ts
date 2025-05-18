@@ -3,9 +3,9 @@ import { GlobalConfigModule } from '@libs/config';
 import { MiddlewareConsumer, Module, NestModule } from '@nestjs/common';
 import { MongooseModule } from '@nestjs/mongoose';
 import mongoose from 'mongoose';
+import { AuthModule } from './auth/auth.module';
 import { RolesModule } from './roles/roles.module';
 import { UsersModule } from './users/users.module';
-
 
 @Module({
   imports: [
@@ -13,6 +13,7 @@ import { UsersModule } from './users/users.module';
     MongooseModule.forRoot(process.env.MONGODB_URI ?? '', { dbName: 'maple-stroy' }),
     RolesModule,
     UsersModule,
+    AuthModule,
   ],
   controllers: [],
   providers: [],

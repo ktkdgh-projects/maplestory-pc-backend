@@ -5,8 +5,10 @@ export interface IUser {
   id: string;
   email: string;
   password: string;
+  passwordSalt: string;
   nickname: string;
-  refreshtoken: string;
+  refreshToken: string;
+  refreshTokenSalt: string;
   createdAt: Date;
   updatedAt: Date;
 }

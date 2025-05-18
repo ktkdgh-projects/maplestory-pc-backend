@@ -19,8 +19,8 @@ export class UserRolesRepository {
             return mapUserRoleDoc(savedUserRole)
         }
 
-        async findUserRole(userId: string): Promise<IUserRole | null> {
-            const userRole = await this.userRolesModel.findOne({ userId }).exec();
+        async findUserRoleByUserId(userId: string): Promise<IUserRole | null> {
+            const userRole = await this.userRolesModel.findOne({ userId }).populate('roleId').exec();
             return userRole ? mapUserRoleDoc(userRole) : null;
         }
 }

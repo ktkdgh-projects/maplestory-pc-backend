@@ -3,7 +3,7 @@ import { UserRole, UserRoleSchema } from '@libs/database'
 import { Module } from '@nestjs/common';
 import { MongooseModule } from '@nestjs/mongoose';
 import { RolesController } from './roles.controller';
-import { RolesRepositoryProvider, RolesServiceProvider, UserRolesRepositoryProvider, UserRolesServiceProvicer } from './roles.provider'
+import { RolesRepositoryProvider, RolesServiceProvider, UserRolesRepositoryProvider, UserRolesServiceProvider } from './roles.provider'
 
 @Module({
     imports: [
@@ -15,8 +15,8 @@ import { RolesRepositoryProvider, RolesServiceProvider, UserRolesRepositoryProvi
         RolesRepositoryProvider,
         UserRolesRepositoryProvider, 
         RolesServiceProvider,
-        UserRolesServiceProvicer
+        UserRolesServiceProvider
     ],
-    exports: [RolesServiceProvider, UserRolesServiceProvicer],
+    exports: [RolesServiceProvider, UserRolesServiceProvider],
 })
 export class RolesModule {}

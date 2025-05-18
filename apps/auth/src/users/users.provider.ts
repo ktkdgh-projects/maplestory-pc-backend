@@ -1,6 +1,6 @@
 import { Provider } from '@nestjs/common';
 import { UsersRepository, UsersRepositoryToken } from './repository/users.repository';
-import { SingupService, SingupServiceToken } from './service/signup.service';
+import { SignupService, SignupServiceToken } from './service/signup.service';
 import { UserProfileService, UserProfileServiceToken } from './service/user-profile.service';
 
 export const UsersRepositoryProvider: Provider = {
@@ -13,7 +13,7 @@ export const UserProfileServiceProvider: Provider = {
     useClass: UserProfileService,
 };
 
-export const SingupServiceProvider: Provider = {
-    provide: SingupServiceToken,
-    useClass: SingupService,
+export const SignupServiceProvider: Provider = {
+    provide: SignupServiceToken,
+    useClass: SignupService,
 };

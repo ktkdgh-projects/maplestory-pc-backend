@@ -19,7 +19,7 @@ export const RolesServiceProvider: Provider = {
     useClass: RolesService,
 };
 
-export const UserRolesServiceProvicer: Provider = {
+export const UserRolesServiceProvider: Provider = {
     provide: UserRolesServiceToken,
     useClass: UserRolesService,
 }

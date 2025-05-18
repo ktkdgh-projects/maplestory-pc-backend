@@ -3,13 +3,15 @@ import { UserDocument } from './user.schema';
 
 export const mapUserDoc = (doc: UserDocument): IUser => {
   return {
-    _id: doc._id,
-    id: doc._id.toString(),
-    email: doc.email,
-    password: doc.password,
-    nickname: doc.nickname,
-    refreshtoken: doc.refreshtoken,
-    createdAt: doc.createdAt,
-    updatedAt: doc.updatedAt,
+      _id: doc._id,
+      id: doc._id.toString(),
+      email: doc.email,
+      password: doc.password,
+      passwordSalt: doc.passwordSalt,
+      nickname: doc.nickname,
+      refreshToken: doc.refreshToken,
+      refreshTokenSalt: doc.refreshTokenSalt,
+      createdAt: doc.createdAt,
+      updatedAt: doc.updatedAt,
   };
 };

@@ -12,12 +12,18 @@ export class User {
     @Prop({ required: true, type: SchemaTypes.String })
     password: string;
 
+    @Prop({ required: true, type: SchemaTypes.String})
+    passwordSalt: string;
+
     @Prop({ index: true, unique: true, type: SchemaTypes.String })
     nickname: string;
 
     @Prop({ type: SchemaTypes.String, default: 'default' })
-    refreshtoken: string;
+    refreshToken: string;
 
+    @Prop({ type: SchemaTypes.String, default: 'default' })
+    refreshTokenSalt: string;
+    
     createdAt: Date;
     updatedAt: Date;
 }
