@@ -1,16 +1,11 @@
 import { ValidationPipe } from '@nestjs/common';
 import { NestExpressApplication } from '@nestjs/platform-express';
+import passport from 'passport';
 
 export const setup = (app: NestExpressApplication) => {
     const globalPrefix = 'api';
     app.setGlobalPrefix(globalPrefix);
 
     app.useGlobalPipes(new ValidationPipe());
-
-    const whitelist = ['http://localhost:3000'];
-    app.enableCors({
-        origin: whitelist,
-        credentials: true,
-    });
-
+    app.use(passport.initialize());
 }

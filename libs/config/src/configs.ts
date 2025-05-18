@@ -13,6 +13,8 @@ export const configs = () => {
         JWT_REFRESH_TOKEN_TIME: env.JWT_REFRESH_TOKEN_TIME,
         INTERATIONS: env.INTERATIONS,
         DKLEN: env.DKLEN,
-        HASH: env.HASH
+        HASH: env.HASH,
+        AUTH_SERVER_URL: env.AUTH_SERVER_URL,
+        EVENT_SERVER_URL: env.EVENT_SERVER_URL
     };
 };

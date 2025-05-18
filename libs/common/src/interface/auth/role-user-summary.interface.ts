@@ -7,3 +7,8 @@ export interface IRoleUserSummary {
     name: UserRoleLevel;   
     isMe: boolean;
 }
+
+export interface IRoleUserList {
+    items: IRoleUserSummary[];
+    nextPage?: number;
+}

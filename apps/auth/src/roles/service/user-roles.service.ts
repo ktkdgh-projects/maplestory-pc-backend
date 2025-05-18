@@ -1,4 +1,4 @@
-import { CreateUserRoleDto, IRoleUserSummary} from '@libs/common';
+import { CreateUserRoleDto, IRoleUserSummary, IRoleUserList} from '@libs/common';
 import { IUserRole, mapUserDoc, UserRoleLevel } from '@libs/database';
 import { ConflictException, Inject, Injectable, NotFoundException } from '@nestjs/common';
 import { ClientSession } from 'mongoose';
@@ -40,7 +40,12 @@ export class UserRolesService {
         return userRole;
     }
 
-    async getUsersByRole(userId: string, role: UserRoleLevel | 'ALL', pageParam: number, limitSize: number) {
+    async getUsersByRole(
+        userId: string, 
+        role: UserRoleLevel | 'ALL', 
+        pageParam: number, 
+        limitSize: number
+    ): Promise<IRoleUserList> {
         let roleId: string | null = null;
 
         if (role !== 'ALL') {

@@ -1,4 +1,4 @@
-import { IUserRoleChangeLog } from '@libs/common'
+import { IRoleUserLogList, IUserRoleChangeLog } from '@libs/common'
 import { BadRequestException, Inject, Injectable } from '@nestjs/common';
 import { UserRoleLogsRepository, UserRoleLogsRepositoryToken } from '../repository/user-role-logs.repository';
 
@@ -12,7 +12,12 @@ export class UserRoleLogsService {
 
     ) {}
 
-    async getRoleChangeLogs(from: string, to: string, pageParam: number, limitSize: number) {
+    async getRoleChangeLogs(
+        from: string, 
+        to: string, 
+        pageParam: number, 
+        limitSize: number
+    ): Promise<IRoleUserLogList> {
         const fromDate = this.parseKSTDate(from, true)
         const toDate = this.parseKSTDate(to, false)
         console.log(fromDate, toDate);

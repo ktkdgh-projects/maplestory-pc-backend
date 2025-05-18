@@ -8,3 +8,8 @@ export interface IUserRoleChangeLog {
     reason: RoleChangeReason;
     createdAt: Date;         
 }
+
+export interface IRoleUserLogList {
+    items: IUserRoleChangeLog[];
+    nextPage?: number;
+}

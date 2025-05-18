@@ -12,7 +12,7 @@ export class SignoutService {
         private readonly userProfileService: UserProfileService,
     ) {}
 
-    async signout(userId: string): Promise<{ message: string }>{
+    async signout(userId: string): Promise<{ message: string }>{        
         if (!isValidObjectId(userId)) {
             throw new BadRequestException('유효하지 않은 userId 형식입니다.');
         }
