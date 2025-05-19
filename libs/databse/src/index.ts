@@ -2,3 +2,8 @@ export * from './users';
 export * from './roles';
 export * from './userRoles';
 export * from './userRoleLogs';
+export * from './events'
+export * from './rewards'
+export * from './rewardRequests'
+export * from './userRewards'
+export * from './userActivityLogs'
