@@ -7,17 +7,17 @@ export type RewardDocument = Reward & Document;
 
 @Schema({ versionKey: false, timestamps: { currentTime: getCurrentDate } })
 export class Reward {
-    @Prop({ref: 'Event', type: SchemaTypes.ObjectId })
+    @Prop({ ref: 'Event', unique: true, type: SchemaTypes.ObjectId })
     eventId: Types.ObjectId;
 
     @Prop({ required: true, type: String, enum: RewardType })
     rewardType: RewardType;
 
-    @Prop({ type: SchemaTypes.String})
+    @Prop({ type: SchemaTypes.String })
     description: string;
 
-    @Prop({ required: true, type: SchemaTypes.Number})
-    amount: number
+    @Prop({ required: true, type: SchemaTypes.Number })
+    amount: number;
 
     createdAt: Date;
     updatedAt: Date;

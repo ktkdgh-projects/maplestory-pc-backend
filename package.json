@@ -1,37 +1,37 @@
 {
-  "name": "maplestory-pc-backend",
-  "packageManager": "yarn@4.1.0",
-  "private": true,
-  "workspaces": [
-    "apps/*",
-    "libs/*"
-  ],
-  "scripts": {
-    "build": "tsc -p tsconfig.build.json",
-    "build:all": "yarn workspaces foreach --all --exclude maplestory-pc-backend --topological-dev --verbose run build",
-    "dev:gateway": "nest start @gateway/server --watch",
-    "dev:auth": "nest start @auth/server --watch",
-    "dev:event": "nest start @event/server --watch",
-    "typecheck:all": "yarn workspaces foreach -pv run typecheck",
-    "typecheck": "tsc --noEmit",
-    "lint:staged": "lint-staged",
-    "prepare": "husky install",
-    "init:docker": "docker network create maplestory && docker-compose -f docker-compose.yml up -d",
-    "start:docker": "docker-compose -f docker-compose.yml up -d --build"
-  },
-  "devDependencies": {
-    "@nestjs/cli": "^10.4.9",
-    "@typescript-eslint/eslint-plugin": "^6.20.0",
-    "@typescript-eslint/parser": "^6.20.0",
-    "eslint": "^8.57.0",
-    "eslint-config-prettier": "^8.8.0",
-    "eslint-import-resolver-typescript": "^3.5.5",
-    "eslint-plugin-import": "^2.29.1",
-    "husky": "^8.0.0",
-    "lint-staged": "^13.2.2",
-    "prettier": "^2.8.8",
-    "source-map-support": "^0.5.21",
-    "tslib": "^2.6.2",
-    "typescript": "^5.3.3"
-  }
+    "name": "maplestory-pc-backend",
+    "packageManager": "yarn@4.1.0",
+    "private": true,
+    "workspaces": [
+        "apps/*",
+        "libs/*"
+    ],
+    "scripts": {
+        "build": "tsc -p tsconfig.build.json",
+        "build:all": "yarn workspaces foreach --all --exclude maplestory-pc-backend --topological-dev --verbose run build",
+        "dev:gateway": "nest start @gateway/server --watch",
+        "dev:auth": "nest start @auth/server --watch",
+        "dev:event": "nest start @event/server --watch",
+        "typecheck:all": "yarn workspaces foreach -pv run typecheck",
+        "typecheck": "tsc --noEmit",
+        "lint:staged": "lint-staged",
+        "prepare": "husky install",
+        "init:docker": "docker network create maplestory && docker-compose -f docker-compose.yml up -d",
+        "start:docker": "docker-compose -f docker-compose.yml up -d --build"
+    },
+    "devDependencies": {
+        "@nestjs/cli": "^10.4.9",
+        "@typescript-eslint/eslint-plugin": "^6.20.0",
+        "@typescript-eslint/parser": "^6.20.0",
+        "eslint": "^8.57.0",
+        "eslint-config-prettier": "^8.8.0",
+        "eslint-import-resolver-typescript": "^3.5.5",
+        "eslint-plugin-import": "^2.29.1",
+        "husky": "^8.0.0",
+        "lint-staged": "^13.2.2",
+        "prettier": "^2.8.8",
+        "source-map-support": "^0.5.21",
+        "tslib": "^2.6.2",
+        "typescript": "^5.3.3"
+    }
 }

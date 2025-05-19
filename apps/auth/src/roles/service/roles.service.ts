@@ -8,7 +8,7 @@ export const RolesServiceToken = 'RolesServiceToken';
 export class RolesService {
     constructor(
         @Inject(RolesRepositoryToken)
-        private readonly rolesRepository: RolesRepository
+        private readonly rolesRepository: RolesRepository,
     ) {}
 
     async initRoles(): Promise<{ message: string }> {
@@ -28,17 +28,17 @@ export class RolesService {
             await this.rolesRepository.insertMany(roles);
         } catch (error) {
             throw new InternalServerErrorException('역할 초기화 중 오류가 발생했습니다.');
-        }        
-        
+        }
+
         return { message: '역할이 성공적으로 초기화되었습니다.' };
     }
 
     async getRoleByName(name: UserRoleLevel): Promise<IRole> {
         const role = await this.rolesRepository.findByName(name);
         if (!role) {
-            throw new NotFoundException(`"${name}"에 해당하는 역할이 존재하지 않습니다.`)
+            throw new NotFoundException(`"${name}"에 해당하는 역할이 존재하지 않습니다.`);
         }
 
-        return role
+        return role;
     }
 }

@@ -1,4 +1,4 @@
-import { IRoleUserList, IRoleUserLogList, ManageUserRolesDto } from '@libs/common'
+import { IRoleUserList, IRoleUserLogList, ManageUserRolesDto } from '@libs/common';
 import { UserRoleLevel } from '@libs/database';
 import { Body, Controller, Get, Inject, Patch, Post, Query } from '@nestjs/common';
 import { ManageUserRolesService, ManageUserRolesServiceToken } from './service/manage-user-roles.service';
@@ -16,11 +16,11 @@ export class RolesController {
         @Inject(ManageUserRolesServiceToken)
         private readonly manageUserRolesService: ManageUserRolesService,
         @Inject(UserRoleLogsServiceToken)
-        private readonly userRoleLogsService: UserRoleLogsService
+        private readonly userRoleLogsService: UserRoleLogsService,
     ) {}
 
     @Post('init')
-    async init(): Promise<{ message: string }>  {
+    async init(): Promise<{ message: string }> {
         return this.rolesService.initRoles();
     }
 
@@ -28,12 +28,12 @@ export class RolesController {
     async manageUserRole(@Body() manageUserRolesDto: ManageUserRolesDto): Promise<{ message: string }> {
         return this.manageUserRolesService.manageUserRole(manageUserRolesDto);
     }
-    
+
     @Get('users')
     async getUsersByRole(
-        @Query('role') role: UserRoleLevel | 'ALL', 
-        @Query('userId') userId: string, 
-        @Query('pageParam') pageParam: number
+        @Query('role') role: UserRoleLevel | 'ALL',
+        @Query('userId') userId: string,
+        @Query('pageParam') pageParam: number,
     ): Promise<IRoleUserList> {
         pageParam = isNaN(Number(pageParam)) ? 0 : Number(pageParam);
         return this.userRolesService.getUsersByRole(userId, role, pageParam, 10);
@@ -43,7 +43,7 @@ export class RolesController {
     async getRoleChangeLogs(
         @Query('from') from: string,
         @Query('to') to: string,
-        @Query('pageParam') pageParam: number
+        @Query('pageParam') pageParam: number,
     ): Promise<IRoleUserLogList> {
         return this.userRoleLogsService.getRoleChangeLogs(from, to, pageParam, 10);
     }

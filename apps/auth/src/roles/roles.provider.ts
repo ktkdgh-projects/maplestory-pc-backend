@@ -19,8 +19,8 @@ export const UserRolesRepositoryProvider: Provider = {
 
 export const UserRoleLogsRepositoryProvider: Provider = {
     provide: UserRoleLogsRepositoryToken,
-    useClass: UserRoleLogsRepository
-}
+    useClass: UserRoleLogsRepository,
+};
 
 export const RolesServiceProvider: Provider = {
     provide: RolesServiceToken,
@@ -40,4 +40,4 @@ export const ManageUserRolesServiceProvider: Provider = {
 export const UserRoleLogsServiceProvider: Provider = {
     provide: UserRoleLogsServiceToken,
     useClass: UserRoleLogsService,
-}
+};

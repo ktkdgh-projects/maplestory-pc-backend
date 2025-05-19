@@ -23,6 +23,7 @@ export class UserProfileService {
             id: user._id.toString(),
             email: user.email,
             nickname: user.nickname,
+            inviteCode: user.inviteCode,
         };
     }
 

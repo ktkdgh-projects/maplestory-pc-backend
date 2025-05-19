@@ -8,7 +8,6 @@ export const mapUserRewardDoc = (doc: UserRewardDocument): IUserReward => {
         userId: doc.userId,
         eventId: doc.eventId,
         rewardId: doc.rewardId,
-        amount: doc.amount,
         createdAt: doc.createdAt,
         updatedAt: doc.updatedAt,
     };

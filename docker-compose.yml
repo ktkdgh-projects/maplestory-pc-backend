@@ -5,7 +5,7 @@ services:
         container_name: mongodb1
         command: --replSet myRepl --keyFile /keys/mongodb-keyfile
         ports:
-            - "27017:27017"
+            - '27017:27017'
         volumes:
             - ./dockers/data/mongodb1:/data/db
             - keys:/keys
@@ -25,7 +25,7 @@ services:
         container_name: mongodb2
         command: --replSet myRepl --keyFile /keys/mongodb-keyfile
         ports:
-            - "27018:27017"
+            - '27018:27017'
         volumes:
             - ./dockers/data/mongodb2:/data/db
             - keys:/keys
@@ -45,7 +45,7 @@ services:
         container_name: mongodb3
         command: --replSet myRepl --keyFile /keys/mongodb-keyfile
         ports:
-            - "27019:27017"
+            - '27019:27017'
         volumes:
             - ./dockers/data/mongodb3:/data/db
             - keys:/keys
@@ -62,7 +62,7 @@ services:
         build: ./dockers/mongodb-replica/key
         volumes:
             - keys:/keys
-        restart: "no"
+        restart: 'no'
 
     init-replica:
         build: ./dockers/mongodb-replica/init
@@ -71,8 +71,8 @@ services:
             - mongodb2
             - mongodb3
         networks:
-            - maplestory    
-        restart: "no"
+            - maplestory
+        restart: 'no'
 
 volumes:
     keys:

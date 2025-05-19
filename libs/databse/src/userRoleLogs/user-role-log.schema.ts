@@ -8,19 +8,19 @@ export type UserRoleLogDocument = UserRoleLog & Document;
 
 @Schema({ versionKey: false, timestamps: { currentTime: getCurrentDate } })
 export class UserRoleLog {
-    @Prop({ref: 'User', type: SchemaTypes.ObjectId })
+    @Prop({ ref: 'User', type: SchemaTypes.ObjectId })
     userId: Types.ObjectId;
 
     @Prop({ required: true, type: String, enum: UserRoleLevel })
-    prevRoleName: UserRoleLevel; 
-    
-    @Prop({ required: true, type: String, enum: UserRoleLevel })
-    newRoleName: UserRoleLevel; 
+    prevRoleName: UserRoleLevel;
 
-    @Prop({ref: 'User', type: SchemaTypes.ObjectId })
+    @Prop({ required: true, type: String, enum: UserRoleLevel })
+    newRoleName: UserRoleLevel;
+
+    @Prop({ ref: 'User', type: SchemaTypes.ObjectId })
     changedBy: Types.ObjectId;
 
-    @Prop({ required: true, enum: RoleChangeReason  })
+    @Prop({ required: true, enum: RoleChangeReason })
     reason: RoleChangeReason;
 
     createdAt: Date;

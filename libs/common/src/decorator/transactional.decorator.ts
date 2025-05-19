@@ -1,11 +1,7 @@
 import { Connection, ClientSession } from 'mongoose';
 
 export function Transactional() {
-    return function (
-        target: any,
-        propertyKey: string,
-        descriptor: PropertyDescriptor,
-    ) {
+    return function (target: any, propertyKey: string, descriptor: PropertyDescriptor) {
         const originalMethod = descriptor.value;
         descriptor.value = async function (...args: any[]) {
             const that = this as { connection: Connection };

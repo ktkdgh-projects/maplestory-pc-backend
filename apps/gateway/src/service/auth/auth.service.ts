@@ -1,4 +1,13 @@
-import { SignupDto, IUserSummary, SigninDto, IJwtTokens, IAccessToken, ManageUserRolesDto, IRoleUserLogList, IRoleUserList } from '@libs/common';
+import {
+    SignupDto,
+    IUserSummary,
+    SigninDto,
+    IJwtTokens,
+    IAccessToken,
+    ManageUserRolesDto,
+    IRoleUserLogList,
+    IRoleUserList,
+} from '@libs/common';
 import { UserRoleLevel } from '@libs/database';
 import { HttpService } from '@nestjs/axios';
 import { Injectable } from '@nestjs/common';
@@ -21,7 +30,7 @@ export class AuthService {
             );
             return data;
         } catch (error: any) {
-            handleHttpError(error)
+            handleHttpError(error);
         }
     }
 
@@ -32,7 +41,7 @@ export class AuthService {
             );
             return data;
         } catch (error) {
-            handleHttpError(error)
+            handleHttpError(error);
         }
     }
 
@@ -43,7 +52,7 @@ export class AuthService {
             );
             return data;
         } catch (error) {
-            handleHttpError(error)
+            handleHttpError(error);
         }
     }
 
@@ -54,18 +63,18 @@ export class AuthService {
             );
             return data;
         } catch (error) {
-            handleHttpError(error)
+            handleHttpError(error);
         }
     }
 
-    async handleRefresh(refreshToken: string): Promise<IAccessToken>  {
+    async handleRefresh(refreshToken: string): Promise<IAccessToken> {
         try {
             const { data } = await firstValueFrom<AxiosResponse<IAccessToken>>(
                 this.httpService.post(`${this.baseUrl}/auth/refresh`, { refreshToken }),
             );
             return data;
         } catch (error) {
-            handleHttpError(error)
+            handleHttpError(error);
         }
     }
 
@@ -74,50 +83,42 @@ export class AuthService {
             const { data } = await firstValueFrom<AxiosResponse<{ message: string }>>(
                 this.httpService.post(`${this.baseUrl}/roles/init`),
             );
-        return data;
+            return data;
         } catch (error) {
-            handleHttpError(error)
+            handleHttpError(error);
         }
     }
 
     async manageUserRole(userId: string, manageUserRolesDto: ManageUserRolesDto): Promise<{ message: string }> {
         try {
             const { data } = await firstValueFrom<AxiosResponse<{ message: string }>>(
-                this.httpService.patch(`${this.baseUrl}/roles/manage`, { ...manageUserRolesDto, changedBy: userId}),
+                this.httpService.patch(`${this.baseUrl}/roles/manage`, { ...manageUserRolesDto, changedBy: userId }),
             );
-        return data;
+            return data;
         } catch (error) {
-            handleHttpError(error)
+            handleHttpError(error);
         }
     }
 
-    async getUsersByRole(
-        userId: string, 
-        role: UserRoleLevel | 'ALL', 
-        pageParam: number
-    ): Promise<IRoleUserList> {
+    async getUsersByRole(userId: string, role: UserRoleLevel | 'ALL', pageParam: number): Promise<IRoleUserList> {
         try {
             const { data } = await firstValueFrom<AxiosResponse<IRoleUserList>>(
-                this.httpService.get(`${this.baseUrl}/roles/users`, { params: { userId, role, pageParam }}),
+                this.httpService.get(`${this.baseUrl}/roles/users`, { params: { userId, role, pageParam } }),
             );
-        return data;
+            return data;
         } catch (error) {
-            handleHttpError(error)
+            handleHttpError(error);
         }
     }
 
-    async getRoleChangeLogs(
-        from: string, 
-        to: string, 
-        pageParam: number
-    ): Promise<IRoleUserLogList> {
+    async getRoleChangeLogs(from: string, to: string, pageParam: number): Promise<IRoleUserLogList> {
         try {
             const { data } = await firstValueFrom<AxiosResponse<IRoleUserLogList>>(
-                this.httpService.patch(`${this.baseUrl}/roles/logs`, { params: { from, to, pageParam }}),
+                this.httpService.patch(`${this.baseUrl}/roles/logs`, { params: { from, to, pageParam } }),
             );
-        return data;
+            return data;
         } catch (error) {
-            handleHttpError(error)
+            handleHttpError(error);
         }
     }
 }

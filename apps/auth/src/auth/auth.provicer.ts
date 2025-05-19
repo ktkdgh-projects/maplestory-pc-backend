@@ -8,24 +8,24 @@ import { TokenService, TokenServiceToken } from './service/token.service';
 export const TokenServiceProvider: Provider = {
     provide: TokenServiceToken,
     useClass: TokenService,
-}
+};
 
 export const SigninServiceProvider: Provider = {
     provide: SigninServiceToken,
     useClass: SigninService,
-}
+};
 
 export const SingoutServiceProvider: Provider = {
     provide: SignoutServiceToken,
-    useClass: SignoutService
-}
+    useClass: SignoutService,
+};
 
 export const RefreshServiceProvider: Provider = {
     provide: RefreshServiceToken,
-    useClass: RefreshService
-}
+    useClass: RefreshService,
+};
 
 export const Pbkdf2ServiceProvider: Provider = {
     provide: Pbkdf2ServiceToken,
-    useClass: Pbkdf2Service
-}
+    useClass: Pbkdf2Service,
+};

@@ -1,20 +1,17 @@
 import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
 import { Document, SchemaTypes } from 'mongoose';
 import { getCurrentDate } from '../utils/time';
-import { EventConditionType, EventStatus } from './event.enum';
+import { EventStatus } from './event.enum';
 
 export type EventDocument = Event & Document;
 
 @Schema({ versionKey: false, timestamps: { currentTime: getCurrentDate } })
 export class Event {
-    @Prop({ required: true, type: SchemaTypes.String})
+    @Prop({ required: true, type: SchemaTypes.String })
     title: string;
 
-    @Prop({ type: SchemaTypes.String})
+    @Prop({ type: SchemaTypes.String })
     description: string;
-
-    @Prop({ required: true, type: String, enum: EventConditionType })
-    condition: EventConditionType;
 
     @Prop({ required: true, type: SchemaTypes.Map })
     conditionParams: Map<string, unknown>;

@@ -12,12 +12,12 @@ export class AuthController {
         @Inject(SignoutServiceToken)
         private readonly signoutService: SignoutService,
         @Inject(RefreshServiceToken)
-        private readonly refreshService: RefreshService
+        private readonly refreshService: RefreshService,
     ) {}
 
     @Post('signin')
     async signIn(@Body() signInDto: SigninDto): Promise<IJwtTokens> {
-        return this.signinService.signin(signInDto)
+        return this.signinService.signin(signInDto);
     }
 
     @Post('signout')

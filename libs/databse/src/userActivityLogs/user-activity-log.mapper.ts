@@ -6,8 +6,8 @@ export const mapUserActivityLogDoc = (doc: UserActivityLogDocument): IUserActivi
         _id: doc._id,
         id: doc._id.toString(),
         userId: doc.userId,
-        actionType: doc.actionType,
-        metadata: doc.metadata,
+        activityType: doc.activityType,
+        eventId: doc.eventId,
         createdAt: doc.createdAt,
         updatedAt: doc.updatedAt,
     };

@@ -12,7 +12,7 @@ export class User {
     @Prop({ required: true, type: SchemaTypes.String })
     password: string;
 
-    @Prop({ required: true, type: SchemaTypes.String})
+    @Prop({ required: true, type: SchemaTypes.String })
     passwordSalt: string;
 
     @Prop({ index: true, unique: true, type: SchemaTypes.String })
@@ -23,7 +23,10 @@ export class User {
 
     @Prop({ type: SchemaTypes.String, default: 'default' })
     refreshTokenSalt: string;
-    
+
+    @Prop({ type: SchemaTypes.String, unique: true })
+    inviteCode?: string;
+
     createdAt: Date;
     updatedAt: Date;
 }

@@ -7,10 +7,10 @@ export type RewardRequestDocument = RewardRequest & Document;
 
 @Schema({ versionKey: false, timestamps: { currentTime: getCurrentDate } })
 export class RewardRequest {
-    @Prop({ref: 'User', type: SchemaTypes.ObjectId })
+    @Prop({ ref: 'User', type: SchemaTypes.ObjectId })
     userId: Types.ObjectId;
 
-    @Prop({ref: 'Event', type: SchemaTypes.ObjectId })
+    @Prop({ ref: 'Event', type: SchemaTypes.ObjectId })
     eventId: Types.ObjectId;
 
     @Prop({ required: true, type: String, enum: RewardRequestStatus })
@@ -19,11 +19,9 @@ export class RewardRequest {
     @Prop({ required: true, type: String, enum: RewardRequestReason })
     reason: RewardRequestReason;
 
-    @Prop({ required: true, type: SchemaTypes.Date })
-    processedAt: Date;
-
     createdAt: Date;
     updatedAt: Date;
 }
 
 export const RewardRequestSchema = SchemaFactory.createForClass(RewardRequest);
+RewardRequestSchema.index({ userId: 1, eventId: 1 }, { unique: true });

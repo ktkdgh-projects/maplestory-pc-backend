@@ -24,6 +24,11 @@ export class UsersRepository {
         return user ? mapUserDoc(user) : null;
     }
 
+    async findByInviteCode(inviteCode: string): Promise<IUser | null> {
+        const user = await this.userModel.findOne({ inviteCode }).exec();
+        return user ? mapUserDoc(user) : null;
+    }
+
     async findByEmailOrNickname(email: string, nickname: string): Promise<IUser | null> {
         const user = await this.userModel.findOne({ $or: [{ email }, { nickname }] }).exec();
         return user ? mapUserDoc(user) : null;

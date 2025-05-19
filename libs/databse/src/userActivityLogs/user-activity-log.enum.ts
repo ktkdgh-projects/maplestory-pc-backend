@@ -1,7 +1,6 @@
-export enum UserActionType {
+export enum UserActivityType {
     LOGIN = 'LOGIN',
     INVITE = 'INVITE',
-    PURCHASE = 'PURCHASE',
-    VIEW_ITEM = 'VIEW_ITEM',
-    COMPLETE_MISSION = 'COMPLETE_MISSION',
+    EVENT_VIEW = 'EVENT_VIEW',
+    EVENT_PARTICIPATE = 'EVENT_PARTICIPATE',
 }

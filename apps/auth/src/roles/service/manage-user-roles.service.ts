@@ -10,9 +10,8 @@ export const ManageUserRolesServiceToken = 'ManageUserRolesServiceToken';
 
 @Injectable()
 export class ManageUserRolesService {
-
     constructor(
-        @InjectConnection() 
+        @InjectConnection()
         private readonly connection: Connection,
 
         @Inject(UserRolesRepositoryToken)
@@ -20,14 +19,14 @@ export class ManageUserRolesService {
         @Inject(RolesRepositoryToken)
         private readonly rolesRepository: RolesRepository,
         @Inject(UserRoleLogsRepositoryToken)
-        private readonly userRoleLogsRepository: UserRoleLogsRepository
+        private readonly userRoleLogsRepository: UserRoleLogsRepository,
     ) {}
 
     @Transactional()
     async manageUserRole(dto: ManageUserRolesDto, session?: ClientSession): Promise<{ message: string }> {
         const { userId, newRoleName, changedBy, reason } = dto;
 
-        const userRole = await this.userRolesRepository.findUserRoleByUserId(userId)
+        const userRole = await this.userRolesRepository.findUserRoleByUserId(userId);
         if (!userRole) {
             throw new NotFoundException('사용자 권한 정보를 찾을 수 없습니다.');
         }
@@ -52,5 +51,4 @@ export class ManageUserRolesService {
 
         return { message: '역할이 성공적으로 변경되었습니다' };
     }
-
 }

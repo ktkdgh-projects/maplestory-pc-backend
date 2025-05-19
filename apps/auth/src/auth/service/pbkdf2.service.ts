@@ -1,5 +1,5 @@
 import { pbkdf2Sync, randomBytes } from 'crypto';
-import { IPBKDF2EncryptedData } from '@libs/common'
+import { IPBKDF2EncryptedData } from '@libs/common';
 import { BadRequestException, Injectable } from '@nestjs/common';
 
 export const Pbkdf2ServiceToken = 'Pbkdf2ServiceToken';

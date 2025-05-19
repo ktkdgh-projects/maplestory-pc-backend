@@ -7,7 +7,6 @@ export const mapEventDoc = (doc: EventDocument): IEvent => {
         id: doc._id.toString(),
         title: doc.title,
         description: doc.description,
-        condition: doc.condition,
         conditionParams: doc.conditionParams,
         startAt: doc.startAt,
         endAt: doc.endAt,

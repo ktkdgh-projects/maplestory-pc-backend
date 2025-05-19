@@ -9,7 +9,6 @@ export const mapRewardRequestDoc = (doc: RewardRequestDocument): IRewardRequest 
         eventId: doc.eventId,
         status: doc.status,
         reason: doc.reason,
-        processedAt: doc.processedAt,
         createdAt: doc.createdAt,
         updatedAt: doc.updatedAt,
     };

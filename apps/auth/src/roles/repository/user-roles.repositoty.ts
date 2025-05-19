@@ -9,14 +9,14 @@ export const UserRolesRepositoryToken = 'UserRolesRepositoryToken';
 @Injectable()
 export class UserRolesRepository {
     constructor(
-        @InjectModel(UserRole.name) 
+        @InjectModel(UserRole.name)
         private readonly userRolesModel: Model<UserRoleDocument>,
     ) {}
 
     async createUserRole(createUserRoleDto: CreateUserRoleDto, session?: ClientSession): Promise<IUserRole> {
         const userRole = new this.userRolesModel({ ...createUserRoleDto });
         const savedUserRole = await userRole.save({ session });
-        return mapUserRoleDoc(savedUserRole)
+        return mapUserRoleDoc(savedUserRole);
     }
 
     async findUserRoleByUserId(userId: string): Promise<IUserRole | null> {
@@ -25,7 +25,7 @@ export class UserRolesRepository {
     }
 
     async findUserRoleByRoleId(roleId: string | null, pageParam: number, limitSize: number): Promise<IUserRole[]> {
-        const query = roleId ? { roleId } : {};  
+        const query = roleId ? { roleId } : {};
 
         const userRoles = await this.userRolesModel
             .find(query)
@@ -33,9 +33,9 @@ export class UserRolesRepository {
             .populate('roleId')
             .skip(pageParam * limitSize)
             .limit(limitSize)
-            .exec()
+            .exec();
 
-        return userRoles.map((userRole) => mapUserRoleDoc(userRole))
+        return userRoles.map((userRole) => mapUserRoleDoc(userRole));
     }
 
     async updatedUserRole(userId: string, roleId: string, session?: ClientSession): Promise<number> {

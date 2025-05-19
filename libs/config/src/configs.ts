@@ -15,6 +15,6 @@ export const configs = () => {
         DKLEN: env.DKLEN,
         HASH: env.HASH,
         AUTH_SERVER_URL: env.AUTH_SERVER_URL,
-        EVENT_SERVER_URL: env.EVENT_SERVER_URL
+        EVENT_SERVER_URL: env.EVENT_SERVER_URL,
     };
 };

@@ -1,8 +1,8 @@
 import { UserRoleLevel, RoleChangeReason } from '@libs/database';
-import { IsEnum, IsOptional, IsString } from 'class-validator';
+import { IsEnum, IsMongoId, IsOptional, IsString } from 'class-validator';
 
 export class ManageUserRolesDto {
-    @IsString()
+    @IsMongoId()
     userId: string;
 
     @IsEnum(UserRoleLevel)

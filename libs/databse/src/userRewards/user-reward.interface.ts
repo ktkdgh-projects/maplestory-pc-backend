@@ -1,4 +1,4 @@
-import { Types } from 'mongoose'
+import { Types } from 'mongoose';
 
 export interface IUserReward {
     _id: Types.ObjectId;
@@ -6,7 +6,6 @@ export interface IUserReward {
     userId: Types.ObjectId;
     eventId: Types.ObjectId;
     rewardId: Types.ObjectId;
-    amount: number
     createdAt: Date;
     updatedAt: Date;
 }

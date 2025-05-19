@@ -9,7 +9,7 @@ import { RoleGuard } from './guards/role.guard';
         JwtModule.register({
             secret: process.env.JWT_SECRET_KEY,
             signOptions: { algorithm: 'HS512' },
-            verifyOptions: { algorithms: ['HS512']},
+            verifyOptions: { algorithms: ['HS512'] },
         }),
     ],
     controllers: [],

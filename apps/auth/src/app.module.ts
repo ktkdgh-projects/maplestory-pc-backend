@@ -8,15 +8,15 @@ import { RolesModule } from './roles/roles.module';
 import { UsersModule } from './users/users.module';
 
 @Module({
-  imports: [
-    GlobalConfigModule,
-    MongooseModule.forRoot(process.env.MONGODB_URI ?? '', { dbName: 'maple-stroy' }),
-    RolesModule,
-    UsersModule,
-    AuthModule,
-  ],
-  controllers: [],
-  providers: [],
+    imports: [
+        GlobalConfigModule,
+        MongooseModule.forRoot(process.env.MONGODB_URI ?? '', { dbName: 'maple-stroy' }),
+        RolesModule,
+        UsersModule,
+        AuthModule,
+    ],
+    controllers: [],
+    providers: [],
 })
 export class AppModule implements NestModule {
     private readonly isDev: boolean = process.env.MODE === 'dev';
@@ -26,4 +26,3 @@ export class AppModule implements NestModule {
         mongoose.set('debug', this.isDev);
     }
 }
-

@@ -14,4 +14,8 @@ export class SignupDto {
     @IsString()
     @IsOptional()
     passwordSalt?: string;
+
+    @IsString()
+    @IsOptional()
+    inviteCode?: string;
 }

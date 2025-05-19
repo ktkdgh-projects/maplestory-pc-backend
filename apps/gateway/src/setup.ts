@@ -8,4 +8,4 @@ export const setup = (app: NestExpressApplication) => {
 
     app.useGlobalPipes(new ValidationPipe());
     app.use(passport.initialize());
-}
+};

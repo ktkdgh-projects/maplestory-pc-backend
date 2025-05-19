@@ -6,9 +6,7 @@ export const TokenServiceToken = 'TokenServiceToken';
 
 @Injectable()
 export class TokenService {
-    constructor(
-        private readonly jwtService: JwtService,
-    ) {}
+    constructor(private readonly jwtService: JwtService) {}
 
     verifyAccessToken(token: string): IJwtPayload {
         const { JWT_ACCESS_SECRET_KEY } = process.env;

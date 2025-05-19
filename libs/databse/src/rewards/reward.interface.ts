@@ -1,5 +1,5 @@
-import { Types } from 'mongoose'
-import { RewardType } from "./reward.enum";
+import { Types } from 'mongoose';
+import { RewardType } from './reward.enum';
 
 export interface IReward {
     _id: Types.ObjectId;
@@ -7,7 +7,7 @@ export interface IReward {
     eventId: Types.ObjectId;
     rewardType: RewardType;
     description: string;
-    amount: number
+    amount: number;
     createdAt: Date;
     updatedAt: Date;
 }

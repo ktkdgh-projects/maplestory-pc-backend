@@ -1,7 +1,7 @@
-import { CreateUserRoleDto, IRoleUserSummary, IRoleUserList} from '@libs/common';
+import { CreateUserRoleDto, IRoleUserSummary, IRoleUserList } from '@libs/common';
 import { IUserRole, mapUserDoc, UserRoleLevel } from '@libs/database';
-import { ConflictException, Inject, Injectable, NotFoundException } from '@nestjs/common';
-import { ClientSession } from 'mongoose';
+import { BadRequestException, ConflictException, Inject, Injectable, NotFoundException } from '@nestjs/common';
+import { ClientSession, isValidObjectId } from 'mongoose';
 import { RolesRepository, RolesRepositoryToken } from '../repository/roles.repository';
 import { UserRolesRepository, UserRolesRepositoryToken } from '../repository/user-roles.repositoty';
 import { RolesService, RolesServiceToken } from './roles.service';
@@ -41,11 +41,14 @@ export class UserRolesService {
     }
 
     async getUsersByRole(
-        userId: string, 
-        role: UserRoleLevel | 'ALL', 
-        pageParam: number, 
-        limitSize: number
+        userId: string,
+        role: UserRoleLevel | 'ALL',
+        pageParam: number,
+        limitSize: number,
     ): Promise<IRoleUserList> {
+        if (!isValidObjectId(userId)) {
+            throw new BadRequestException('유효하지 않은 userId 형식입니다.');
+        }
         let roleId: string | null = null;
 
         if (role !== 'ALL') {
@@ -60,7 +63,7 @@ export class UserRolesService {
 
         const items: IRoleUserSummary[] = users.map((userRole) => {
             const user = mapUserDoc(Object(userRole.userId));
-            
+
             return {
                 userId: user._id.toString(),
                 email: user.email,
@@ -75,7 +78,4 @@ export class UserRolesService {
 
         return { items, nextPage };
     }
-
-};
-
-
+}

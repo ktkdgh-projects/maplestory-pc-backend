@@ -6,17 +6,14 @@ export type UserRewardDocument = UserReward & Document;
 
 @Schema({ versionKey: false, timestamps: { currentTime: getCurrentDate } })
 export class UserReward {
-    @Prop({ref: 'User', type: SchemaTypes.ObjectId })
+    @Prop({ ref: 'User', type: SchemaTypes.ObjectId })
     userId: Types.ObjectId;
 
-    @Prop({ref: 'Event', type: SchemaTypes.ObjectId })
+    @Prop({ ref: 'Event', type: SchemaTypes.ObjectId })
     eventId: Types.ObjectId;
 
-    @Prop({ref: 'Reward', type: SchemaTypes.ObjectId })
+    @Prop({ ref: 'Reward', type: SchemaTypes.ObjectId })
     rewardId: Types.ObjectId;
-
-    @Prop({ required: true, type: SchemaTypes.Number})
-    amount: number
 
     createdAt: Date;
     updatedAt: Date;

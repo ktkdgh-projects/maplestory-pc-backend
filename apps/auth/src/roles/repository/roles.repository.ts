@@ -8,7 +8,7 @@ export const RolesRepositoryToken = 'RolesRepositoryToken';
 @Injectable()
 export class RolesRepository {
     constructor(
-        @InjectModel(Role.name) 
+        @InjectModel(Role.name)
         private readonly roleModel: Model<RoleDocument>,
     ) {}
 
