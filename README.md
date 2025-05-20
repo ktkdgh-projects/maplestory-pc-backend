@@ -1,6 +1,62 @@
-## 실행 방법
 - 도커 환경 구성은 완료하지 못했습니다. 프로젝트를 클론한 후 서버 실행 과정에서 예상치 못한 오류들이 발생했고, 
   제한된 시간 내에 모두 해결하기 어려워 현재 구현된 부분까지만 제출드립니다. 이후에도 문제 해결과 보완을 이어갈 계획입니다.
+
+---------------------------------------------------------------------------------------------------
+## 실행 방법(제출 기한 지나고 수정한 내용입니다.)
+
+현재 Docker 환경에서는 실행이 불가능한 상태입니다. 로컬 실행 방법을 알려드리겠습니다.
+
+### 로컬환경에서 실행방법
+1. 레포지토리 클론
+
+  ```bash
+  git clone https://github.com/ktkdgh-projects/maplestory-pc-backend.git
+  ```
+2. 패키지 설치
+  ```
+  yarn install
+  ```
+3. 전체 패키지 빌드
+```
+yarn build:all
+```
+4. mongodb 스크립트 
+```
+yarn init:docker
+```
+5. 각각의 터미널에서 실행해주세요.
+```
+yarn dev:auth 
+yarn dev:event
+yarn dev:gateway
+
+```
+.env 파일은 프로젝트 루트 경로에 생성해주시면 됩니다. (예: /your-project/.env)
+
+```
+
+# MongoDB 연결 URI 예시
+MONGODB_URI="mongodb://<username>:<password>@<host1>:<port1>,<host2>:<port2>,<host3>:<port3>/?authSource=admin&replicaSet=<replicaSetName>"
+
+# JWT 설정 예시
+JWT_SECRET_KEY="your_jwt_secret_key"
+JWT_ACCESS_SECRET_KEY="your_access_token_secret_key"
+JWT_REFRESH_SECRET_KEY="your_refresh_token_secret_key"
+JWT_ACCESS_TOKEN_TIME="2h"
+JWT_REFRESH_TOKEN_TIME="14d"
+
+# pbkdf2 설정 예시
+INTERATIONS="100"
+DKLEN="64"
+HASH="sha256"
+
+# 서버 url
+AUTH_SERVER_URL="http://localhost:3001/api"
+EVENT_SERVER_URL="http://localhost:3002/api"
+
+```
+
+
 ##  Database Schema
 
 ###  주요 도메인 및 설명
