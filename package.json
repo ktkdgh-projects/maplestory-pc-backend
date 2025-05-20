@@ -7,14 +7,10 @@
         "libs/*"
     ],
     "scripts": {
-        "database": "yarn workspace @libs/database",
-        "common": "yarn workspace @libs/common",
-        "config": "yarn workspace @libs/config",
-        "build": "nest build",
         "build:auth": "nest build @auth/server",
         "build:event": "nest build @event/server",
         "build:gateway": "nest build @gateway/server",
-        "build:all": "yarn database build && yarn common build && yarn database config",
+        "build:all": "yarn workspace @libs/database run build && yarn workspace @libs/common run build && yarn workspace @libs/config run build",
         "dev:gateway": "nest start @gateway/server --watch",
         "dev:auth": "nest start @auth/server --watch",
         "dev:event": "nest start @event/server --watch",
