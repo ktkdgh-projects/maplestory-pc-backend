@@ -7,8 +7,14 @@
         "libs/*"
     ],
     "scripts": {
-        "build": "tsc -p tsconfig.build.json",
-        "build:all": "yarn workspaces foreach --all --exclude maplestory-pc-backend --topological-dev --verbose run build",
+        "database": "yarn workspace @libs/database",
+        "common": "yarn workspace @libs/common",
+        "config": "yarn workspace @libs/config",
+        "build": "nest build",
+        "build:auth": "nest build @auth/server",
+        "build:event": "nest build @event/server",
+        "build:gateway": "nest build @gateway/server",
+        "build:all": "yarn database build && yarn common build && yarn database config",
         "dev:gateway": "nest start @gateway/server --watch",
         "dev:auth": "nest start @auth/server --watch",
         "dev:event": "nest start @event/server --watch",
@@ -17,7 +23,7 @@
         "lint:staged": "lint-staged",
         "prepare": "husky install",
         "init:docker": "docker network create maplestory && docker-compose -f docker-compose.yml up -d",
-        "start:docker": "docker-compose -f docker-compose.yml up -d --build"
+        "start:docker": "docker-compose -f docker-compose.yml up -d"
     },
     "devDependencies": {
         "@nestjs/cli": "^10.4.9",

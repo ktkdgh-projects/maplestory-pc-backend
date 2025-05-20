@@ -77,7 +77,7 @@ services:
     auth:
         build:
             context: .
-            dockerfile: ./dockers/Dockerfile
+            dockerfile: ./dockers/_auth.Dockerfile
             target: runner
         container_name: auth_server
         working_dir: /runner
@@ -92,11 +92,10 @@ services:
             - maplestory
         restart: always
 
-
     event:
         build:
             context: .
-            dockerfile: ./dockers/Dockerfile
+            dockerfile: ./dockers/_event.Dockerfile
             target: runner
         container_name: event_server
         working_dir: /runner
@@ -114,7 +113,7 @@ services:
     gateway:
         build:
             context: .
-            dockerfile: ./dockers/Dockerfile
+            dockerfile: ./dockers/_gateway.Dockerfile
             target: runner
         container_name: gateway_server
         working_dir: /runner
