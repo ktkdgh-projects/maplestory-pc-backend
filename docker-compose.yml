@@ -74,59 +74,59 @@ services:
             - maplestory
         restart: 'no'
 
-    # auth:
-    #     build:
-    #         context: .
-    #         dockerfile: ./dockers/_auth.Dockerfile
-    #         target: runner
-    #     container_name: auth_server
-    #     working_dir: /runner
-    #     command: yarn dev:auth
-    #     ports:
-    #         - "3001:3001"
-    #     depends_on:
-    #         - mongodb1
-    #         - mongodb2
-    #         - mongodb3
-    #     networks:
-    #         - maplestory
-    #     restart: always
+    auth:
+        build:
+            context: .
+            dockerfile: dockers/_auth.Dockerfile
+            target: runner
+        container_name: auth_server
+        working_dir: /runner
+        command: yarn dist:auth
+        ports:
+            - "3001:3001"
+        depends_on:
+            - mongodb1
+            - mongodb2
+            - mongodb3
+        networks:
+            - maplestory
+        restart: always
 
-    # event:
-    #     build:
-    #         context: .
-    #         dockerfile: ./dockers/_event.Dockerfile
-    #         target: runner
-    #     container_name: event_server
-    #     working_dir: /runner
-    #     command: yarn dev:event
-    #     ports:
-    #         - "3002:3002"
-    #     depends_on:
-    #         - mongodb1
-    #         - mongodb2
-    #         - mongodb3
-    #     networks:
-    #         - maplestory
-    #     restart: always
+    event:
+        build:
+            context: .
+            dockerfile: dockers/_event.Dockerfile
+            target: runner
+        container_name: event_server
+        working_dir: /runner
+        command: yarn dist:event
+        ports:
+            - "3002:3002"
+        depends_on:
+            - mongodb1
+            - mongodb2
+            - mongodb3
+        networks:
+            - maplestory
+        restart: always
 
-    # gateway:
-    #     build:
-    #         context: .
-    #         dockerfile: ./dockers/_gateway.Dockerfile
-    #         target: runner
-    #     container_name: gateway_server
-    #     working_dir: /runner
-    #     command: yarn dev:gateway
-    #     ports:
-    #         - "3000:3000"
-    #     depends_on:
-    #         - mongodb1
-    #         - mongodb2
-    #         - mongodb3
-    #     networks:
-    #         - maplestory
-    #     restart: always
+    gateway:
+        build:
+            context: .
+            dockerfile: dockers/_gateway.Dockerfile
+            target: runner
+        container_name: gateway_server
+        working_dir: /runner
+        command: yarn dist:gateway
+        ports:
+            - "3000:3000"
+        depends_on:
+            - mongodb1
+            - mongodb2
+            - mongodb3
+        networks:
+            - maplestory
+        restart: always
 
 volumes:
     keys:

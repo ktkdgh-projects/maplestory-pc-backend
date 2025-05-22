@@ -7,6 +7,9 @@
         "libs/*"
     ],
     "scripts": {
+        "dist:auth": "node apps/auth/dist/src/main.js",
+        "dist:event": "node apps/event/dist/src/main.js",
+        "dist:gateway": "node apps/gateway/dist/src/main.js",
         "build:auth": "nest build @auth/server",
         "build:event": "nest build @event/server",
         "build:gateway": "nest build @gateway/server",
