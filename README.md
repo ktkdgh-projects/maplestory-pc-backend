@@ -1,60 +1,62 @@
-- 도커 환경 구성은 완료하지 못했습니다. 프로젝트를 클론한 후 서버 실행 과정에서 예상치 못한 오류들이 발생했고, 
-  제한된 시간 내에 모두 해결하기 어려워 현재 구현된 부분까지만 제출드립니다. 이후에도 문제 해결과 보완을 이어갈 계획입니다.
+## 안내 (제출 기한 지나고 수정한 내용입니다.)
 
----------------------------------------------------------------------------------------------------
-## 실행 방법(제출 기한 지나고 수정한 내용입니다.)
+본 프로젝트는 제출 기한 내 주요 기능은 구현 완료했으나, Docker 환경 구성에 일부 미흡한 점이 있었습니다. 이후 지속적으로 개선하여 현재는 Docker 기반 실행이 가능하도록 보완하였습니다. 아래의 실행 방법을 참고해 주세요.
 
-현재 Docker 환경에서는 실행이 불가능한 상태입니다. 로컬 실행 방법을 알려드리겠습니다.
+## 실행 방법
 
-### 로컬환경에서 실행방법
-1. 레포지토리 클론
+1. 레포지토리 클론 및 이동
 
-  ```bash
-  git clone https://github.com/ktkdgh-projects/maplestory-pc-backend.git
-  ```
+    ```code
+    git clone https://github.com/ktkdgh-projects/maplestory-pc-backend.git
+    ```
+
+    ```code
+    cd maplestory-pc-backend
+    ```
+
 2. 패키지 설치
-  ```
-  yarn install
-  ```
+    ```code
+    yarn install
+    ```
 3. 전체 패키지 빌드
-```
-yarn build:all
-```
-4. mongodb 스크립트 
-```
-yarn init:docker
-```
-5. 각각의 터미널에서 실행해주세요.
-```
-yarn dev:auth 
-yarn dev:event
-yarn dev:gateway
 
-```
-.env 파일은 프로젝트 루트 경로에 생성해주시면 됩니다. (예: /your-project/.env)
+    ```code
+    yarn build:all
+    ```
 
-```
+4. .env 파일은 프로젝트 루트 경로에 생성해주시면 됩니다. (예: /maplestory-pc-backend/.env)
 
-# MongoDB 연결 URI 예시
-MONGODB_URI="mongodb://<username>:<password>@<host1>:<port1>,<host2>:<port2>,<host3>:<port3>/?authSource=admin&replicaSet=<replicaSetName>"
+      ```code
+      # MongoDB 연결 URI 예시
+      MONGODB_URI="mongodb://admin:1234@mongodb1:27017,mongodb2:27017,mongodb3:27017/?authSource=admin&replicaSet=myRepl"
 
-# JWT 설정 예시
-JWT_SECRET_KEY="your_jwt_secret_key"
-JWT_ACCESS_SECRET_KEY="your_access_token_secret_key"
-JWT_REFRESH_SECRET_KEY="your_refresh_token_secret_key"
-JWT_ACCESS_TOKEN_TIME="2h"
-JWT_REFRESH_TOKEN_TIME="14d"
+      # JWT 설정 예시
+      JWT_SECRET_KEY="your_jwt_secret_key"
+      JWT_ACCESS_SECRET_KEY="your_access_token_secret_key"
+      JWT_REFRESH_SECRET_KEY="your_refresh_token_secret_key"
+      JWT_ACCESS_TOKEN_TIME="2h"
+      JWT_REFRESH_TOKEN_TIME="14d"
 
-# pbkdf2 설정 예시
-INTERATIONS="100"
-DKLEN="64"
-HASH="sha256"
+      # pbkdf2 설정 예시
+      INTERATIONS="100"
+      DKLEN="64"
+      HASH="sha256"
 
-# 서버 url
-AUTH_SERVER_URL="http://localhost:3001/api"
-EVENT_SERVER_URL="http://localhost:3002/api"
+      # 서버 url
+      AUTH_SERVER_URL="http://auth_server:3001/api"
+      EVENT_SERVER_URL="http://event_server:3002/api"
 
-```
+      ```
+5. 도커 실행 스크립트 
+    ```code
+    yarn init:docker
+    ```
+6. 역할 초기화 API 호출
+    ```http
+    POST http://localhost:3000/api/roles/init 
+    ```
+
+    - 이후 회원가입을 진행해주세요.
 
 
 ##  Database Schema
@@ -575,3 +577,18 @@ RewardClaimDto {
 ```
 
 </details>
+
+## 프로젝트 구조 및 모노레포 구성 이유
+본 프로젝트는 모노레포(monorepo) 방식으로 구성되어 있습니다.
+여러 서비스를 하나의 저장소에서 관리함으로써 다음과 같은 이점을 얻을 수 있었습니다:
+
+- 공통 설정 및 환경 변수 관리를 통합적으로 처리할 수 있어 유지보수가 용이함
+
+- Docker 환경에서의 실행 및 테스트 자동화가 간편해짐
+
+이러한 이유로, 각 서비스를 독립적으로 개발하면서도 통합적인 관리가 가능하도록 모노레포 방식을 선택하게 되었습니다.
+## 마무리
+
+이번 프로젝트는 인증(Auth), 이벤트(Event), API 게이트웨이(Gateway) 등 각 기능을 독립적인 서비스로 구성하며, 마이크로서비스 아키텍처의 흐름을 직접 설계하고 경험해볼 수 있는 좋은 기회였습니다.
+
+초기에는 Docker 환경 설정 및 서비스 간 통신 구조에서 어려움이 있었지만, 다양한 시도와 학습을 통해 점차 구조를 개선하고 안정화시킬 수 있었습니다. 실무와 유사한 환경에서 서비스 간 역할 분리, 배포 및 실행 방식을 고민하고 구현한 과정이 매우 의미 있었습니다.
