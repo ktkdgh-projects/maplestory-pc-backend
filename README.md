@@ -97,7 +97,6 @@
 
 ####  UserRoleLog 
 - 이전 역할(prevRoleName), 새 역할(newRoleName), 권한 변경을 수행한 관리자(changedBy), 그리고 변경 사유(reason: RoleChangeReason enum)를 저장합니다.
-- **UserRole**: 유저와 역할 간의 1:1 연결
 - **UserRoleLog**: 권한 변경에 대한 로그 기록 (`prevRoleName`, `newRoleName`, `changedBy`, `reason` 등)
 Role
 
